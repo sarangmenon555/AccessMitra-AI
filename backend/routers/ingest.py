@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from services.rag import get_embedder, get_index
+from services.rag import embed_query, get_index
 import hashlib
 import re
 import requests
@@ -103,7 +103,7 @@ def embed_and_upsert(chunks, source, category):
     vectors = []
     for chunk in chunks:
         chunk_id = hashlib.md5((source + chunk).encode()).hexdigest()
-        embedding = get_embedder().encode(chunk).tolist()
+        embedding = embed_query(chunk)
         vectors.append({
             "id": chunk_id,
             "values": embedding,

@@ -1,13 +1,12 @@
+import requests as http_requests
 from groq import Groq
 from pinecone import Pinecone
-from sentence_transformers import SentenceTransformer
 from config import settings
 
 groq_client = Groq(api_key=settings.groq_api_key)
 pc = Pinecone(api_key=settings.pinecone_api_key)
 
 _index = None
-_embedder = None
 
 def get_index():
     global _index
@@ -15,11 +14,21 @@ def get_index():
         _index = pc.Index(settings.pinecone_index_name)
     return _index
 
-def get_embedder():
-    global _embedder
-    if _embedder is None:
-        _embedder = SentenceTransformer(settings.embedding_model)
-    return _embedder
+def embed_query(text: str) -> list[float]:
+    response = http_requests.post(
+        f"https://router.huggingface.co/hf-inference/models/{settings.hf_model}/pipeline/feature-extraction",
+        headers={"Authorization": f"Bearer {settings.hf_api_key}"},
+        json={"inputs": text, "options": {"wait_for_model": True}},
+        timeout=30,
+    )
+    response.raise_for_status()
+    result = response.json()
+    if isinstance(result[0], list):
+        vec = result[0]
+        if isinstance(vec[0], list):
+            vec = [sum(col) / len(col) for col in zip(*vec)]
+        return vec
+    return result
 
 SYSTEM_PROMPT = """You are AccessMitra AI, a compassionate and knowledgeable assistant dedicated exclusively to helping differently-abled individuals in India navigate government schemes, jobs, legal rights, and opportunities.
 
@@ -42,11 +51,7 @@ Rules:
 - Always mention eligibility criteria when discussing schemes
 - Always mention how to apply when explaining a scheme
 - Cite source documents at the end of every response
-- If asked about state-specific schemes, mention that state portals may have additional schemes beyond what is covered
 - Amounts and percentages mentioned should only be from the retrieved context"""
-
-def embed_query(text: str) -> list[float]:
-    return get_embedder().encode(text).tolist()
 
 def retrieve_context(query: str, top_k: int = None, filter_category: str = None) -> list[dict]:
     k = top_k or settings.top_k
