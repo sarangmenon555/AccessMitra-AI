@@ -2,18 +2,24 @@ from groq import Groq
 from pinecone import Pinecone
 from sentence_transformers import SentenceTransformer
 from config import settings
-import hashlib
 
 groq_client = Groq(api_key=settings.groq_api_key)
 pc = Pinecone(api_key=settings.pinecone_api_key)
-embedder = SentenceTransformer(settings.embedding_model)
+
 _index = None
+_embedder = None
 
 def get_index():
     global _index
     if _index is None:
         _index = pc.Index(settings.pinecone_index_name)
     return _index
+
+def get_embedder():
+    global _embedder
+    if _embedder is None:
+        _embedder = SentenceTransformer(settings.embedding_model)
+    return _embedder
 
 SYSTEM_PROMPT = """You are AccessMitra AI, a compassionate and knowledgeable assistant dedicated exclusively to helping differently-abled individuals in India navigate government schemes, jobs, legal rights, and opportunities.
 
@@ -40,7 +46,7 @@ Rules:
 - Amounts and percentages mentioned should only be from the retrieved context"""
 
 def embed_query(text: str) -> list[float]:
-    return embedder.encode(text).tolist()
+    return get_embedder().encode(text).tolist()
 
 def retrieve_context(query: str, top_k: int = None, filter_category: str = None) -> list[dict]:
     k = top_k or settings.top_k
