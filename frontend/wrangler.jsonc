@@ -1,0 +1,43 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "accessmitra-ai",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": {
+    "enabled": false
+  },
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "PINECONE_INDEX_HOST": "https://accessmitra-ai-nlou1a8.svc.aped-4627-b74a.pinecone.io",
+    "GROQ_MODEL": "llama-3.3-70b-versatile",
+    "HF_MODEL": "sentence-transformers/all-MiniLM-L6-v2",
+    "TOP_K": "6",
+    "MIN_SCORE": "0.3",
+    "MAX_QUERY_CHARS": "500",
+    "MAX_BODY_BYTES": "8192",
+    "RATE_LIMIT_PER_MINUTE": "12",
+    "FEEDBACK_TTL_DAYS": "180",
+    "ALLOWED_ORIGINS": ""
+  },
+  "kv_namespaces": [
+    {
+      "binding": "FEEDBACK",
+      "id": "b30b5ef6ced64f1db749ff8e293300f8"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "RATE_LIMITER",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 12,
+        "period": 60
+      }
+    }
+  ]
+}

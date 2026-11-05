@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "note": "Seed summaries are drafted from general knowledge and are NOT verified. Replace each with text copied from the exact official document, with section or page, then mark the source current.",
+  "documents": [
+    {
+      "doc_id": "udid-overview",
+      "source_id": "SRC-001",
+      "section": "Project summary of UDID information (not yet verified against the source)",
+      "category": "identity",
+      "text": "The Unique Disability ID (UDID) project was launched to create a national database for persons with disabilities and to issue a Unique Disability Identity Card. The UDID card is intended as a single document of identity and disability. Applications are made through the UDID portal at swavlambancard.gov.in. A notification dated 05.05.2021 on the DEPwD website states that disability certificates and UDID cards are issued through the online portal from 1 June 2021. The medical assessment is carried out by the designated medical authority. Documents requested and the exact steps should be confirmed on the portal and the DEPwD UDID page."
+    },
+    {
+      "doc_id": "rpwd-overview",
+      "source_id": "SRC-003",
+      "section": "Project summary of the RPwD Act, 2016 (not yet verified against the source)",
+      "category": "rights",
+      "text": "The Rights of Persons with Disabilities Act, 2016 is the main legislation on the rights of persons with disabilities in India. It recognises 21 categories of disability. It provides for reservation in government establishments for persons with benchmark disabilities, inclusive education, accessibility of the built environment, transport and information technology, social security, and legal capacity. Benchmark disability means a disability of not less than forty per cent unless otherwise specified. The legal text on India Code is the authoritative version. Section numbers and exact wording must be read from the Act itself."
+    },
+    {
+      "doc_id": "niramaya-overview",
+      "source_id": "SRC-007",
+      "section": "Project summary of National Trust schemes (not yet verified against the source)",
+      "category": "health",
+      "text": "The National Trust runs schemes for persons with autism, cerebral palsy, intellectual disability and multiple disabilities. Niramaya is described as a health insurance scheme. Other National Trust schemes include Disha for early intervention, Vikaas for day care and skill development, and AASRA for home based support. Coverage amounts, premiums, age limits and enrolment routes change over time and must be confirmed on the National Trust website or with a registered organisation of the National Trust."
+    },
+    {
+      "doc_id": "nhfdc-overview",
+      "source_id": "SRC-008",
+      "section": "Project summary of NHFDC loans (not yet verified against the source)",
+      "category": "finance",
+      "text": "The National Handicapped Finance and Development Corporation provides concessional loans to persons with disabilities for self employment and livelihood activities, and for education. Loans are generally routed through State Channelising Agencies. Loan limits, interest rates, income ceilings and required documents differ by scheme and are revised from time to time. Confirm them in the current NHFDC scheme documents before applying."
+    },
+    {
+      "doc_id": "scholarship-overview",
+      "source_id": "SRC-006",
+      "section": "Project summary of scholarship information (not yet verified against the source)",
+      "category": "education",
+      "text": "Scholarship schemes for students with disabilities are administered by the Department of Empowerment of Persons with Disabilities and applications are made through the National Scholarship Portal at scholarships.gov.in. Eligibility conditions, income limits, course coverage, documents and deadlines vary by scheme and by academic year. Deadlines must be checked on the portal on the day of applying. State scholarship schemes can differ from central schemes."
+    },
+    {
+      "doc_id": "adip-overview",
+      "source_id": "SRC-005",
+      "section": "Project summary of ADIP and ARJUN information (not yet verified against the source)",
+      "category": "assistive",
+      "text": "The Assistance to Disabled Persons for Purchase and Fitting of Aids and Appliances (ADIP) scheme provides assistive devices to eligible persons with disabilities. Beneficiary registration is done through the ARJUN portal at adip.depwd.gov.in, which asks for a UDID number or UDID enrolment number. The scheme guideline and the list of approved aids are listed on the Downloads page of that portal. Income criteria and the share of cost borne by the beneficiary are set in the current scheme guideline and have been revised over time, so they must be read from the current guideline."
+    },
+    {
+      "doc_id": "employment-overview",
+      "source_id": "SRC-009",
+      "section": "Project summary of employment information (not yet verified against the source)",
+      "category": "employment",
+      "text": "Employment related reservations for persons with benchmark disabilities in government establishments arise from the RPwD Act, 2016 and related rules and orders issued by the Department of Personnel and Training. Recruitment notices state the posts reserved, age relaxation and fee concessions for each examination. The National Career Service portal at ncs.gov.in lists vacancies and has filters for persons with disabilities. Vacancy listings change daily and this project does not display them."
+    },
+    {
+      "doc_id": "accessible-india-overview",
+      "source_id": "SRC-011",
+      "section": "Project summary of Accessible India Campaign (not yet verified against the source)",
+      "category": "accessibility",
+      "text": "The Accessible India Campaign, also called Sugamya Bharat Abhiyan, aims to make the built environment, transport and information and communication technology more accessible to persons with disabilities. The official campaign website is accessibleindia.gov.in. Current targets, reporting routes and status should be confirmed on that website."
+    },
+    {
+      "doc_id": "grievance-overview",
+      "source_id": "SRC-010",
+      "section": "Project summary of grievance routes (not yet verified against the source)",
+      "category": "rights",
+      "text": "The Chief Commissioner for Persons with Disabilities and State Commissioners deal with complaints about violations of the rights of persons with disabilities under the RPwD Act, 2016. The Office of the Chief Commissioner publishes its complaint procedure on its website. The correct authority depends on the issue and on whether it involves a central or a state establishment, so the relevant authority and procedure must be confirmed from the official website."
+    },
+    {
+      "doc_id": "dept-overview",
+      "source_id": "SRC-004",
+      "section": "Project summary of DEPwD (not yet verified against the source)",
+      "category": "general",
+      "text": "The Department of Empowerment of Persons with Disabilities (DEPwD) is part of the Ministry of Social Justice and Empowerment. Its website publishes schemes, Acts, rules, notifications and links to portals such as the UDID portal, the ARJUN portal and the scholarship portal. State governments run their own disability departments and schemes, so a central scheme is not automatically identical to a state scheme."
+    }
+  ]
+}
