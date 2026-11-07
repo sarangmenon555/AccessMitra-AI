@@ -118,19 +118,22 @@ export async function callModel(
   const s = getSettings(env);
   let raw: string | null = null;
   try {
+    const reasoning = s.groqModel.includes("gpt-oss");
+    const payload: Record<string, unknown> = {
+      model: s.groqModel,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: buildUserMessage(question, state, evidence) },
+      ],
+      temperature: 0.1,
+      max_tokens: reasoning ? 2500 : 900,
+      response_format: { type: "json_object" },
+    };
+    if (reasoning) payload.reasoning_effort = "low";
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: { Authorization: `Bearer ${env.GROQ_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: s.groqModel,
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: buildUserMessage(question, state, evidence) },
-        ],
-        temperature: 0.1,
-        max_tokens: 900,
-        response_format: { type: "json_object" },
-      }),
+      body: JSON.stringify(payload),
       signal: AbortSignal.timeout(30000),
     });
     if (!res.ok) throw new Error(`groq_http_${res.status}`);
